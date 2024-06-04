@@ -189,3 +189,22 @@ function sortza(e){
     tbody.innerHTML="";
     render(arr);
 }
+
+let ss=document.querySelector("#input");
+let str=ss.value;
+
+let search=document.querySelector("#search");
+search.addEventListener("click", searching);
+
+function deepsearch(ele){
+     
+    alert('Input Value: ' + str);
+
+    return ele.first_name.toUppercase()==str.toUppercase() || ele.last_name.toUppercase()==str.toUppercase() || ele.email.toUppercase()==str.toUppercase() ;
+}
+
+function searching (e){
+    let arr5=arr.filter(deepsearch);
+    tbody.innerHTML="";
+    render(arr5);
+}
