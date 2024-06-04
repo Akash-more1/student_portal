@@ -117,14 +117,75 @@ function render(arr){
   
 }
 
- render(arr);
+render(arr);
 
+let bymarks=document.querySelector("#bymarks");
+bymarks.addEventListener("click", marksort);
 
- let idd=document.querySelector("#input");
+function marksort(e){
+    arr.sort((a, b) => a.marks - b.marks);
+    tbody.innerHTML="";
+    render(arr);
+}
 
- let inputstr=idd.ariaValueMax;
+let byclass=document.querySelector("#byclass");
+byclass.addEventListener("click", classsort);
 
- function search(arr,str){
-    let arr2=arr.map()
- }
+function classsort(e){
+    arr.sort((a, b) => a.class - b.class);
+    tbody.innerHTML="";
+    render(arr);
+}
+
+let pass=document.querySelector("#bypass");
+pass.addEventListener("click", passornot);
+
+function passcheck(str) {
+    return str.passing ==true;
+  }
  
+  function passornot(e){
+    let arr2=arr.filter(passcheck);
+    tbody.innerHTML="";
+    render(arr2);
+}
+
+let nameaz=document.querySelector("#atoz");
+nameaz.addEventListener("click", sortaz);
+
+function sortaz(e){
+    arr.sort((a, b) => {
+       
+        if (a.first_name < b.first_name) return -1;
+        if (a.first_name > b.first_name) return 1;
+        
+       
+        if (a.last_name < b.last_name) return -1;
+        if (a.last_name > b.last_name) return 1;
+        
+        
+        return 0;
+    });
+    tbody.innerHTML="";
+    render(arr);
+}
+
+let nameza=document.querySelector("#ztoa");
+nameza.addEventListener("click", sortza);
+
+function sortza(e){
+    arr.sort((a, b) => {
+        
+        if (a.first_name < b.first_name) return 1;
+        if (a.first_name > b.first_name) return -1;
+        
+        
+        if (a.last_name < b.last_name) return 1;
+        if (a.last_name > b.last_name) return -1;
+        
+        
+        return 0;
+    });
+    tbody.innerHTML="";
+    render(arr);
+}
